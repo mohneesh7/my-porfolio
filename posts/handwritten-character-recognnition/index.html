@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+    
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self';">
+    
+
+    <meta name="author" content="Mohneesh Sreegirisetty">
+    <meta name="description" content="Introduction    We train the machine to recognize handwritten Alphabets. We prepared our own dataset for the project. This trained machine learning model can be then used in various other applications like word recognition, English OCR etc. All the relevant code can be found Here.This was the first Mini-Project that I did in my Bachelor&rsquo;s. This project was done under the guidance of Mr. Amit Patel.
+The Data for the Task    This data has been collected and segmented manually by my team.">
+    <meta name="keywords" content="blog,developer,personal,machine learning,data science">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Handwritten Character Recognition With Own Dataset"/>
+<meta name="twitter:description" content="Introduction    We train the machine to recognize handwritten Alphabets. We prepared our own dataset for the project. This trained machine learning model can be then used in various other applications like word recognition, English OCR etc. All the relevant code can be found Here.This was the first Mini-Project that I did in my Bachelor&rsquo;s. This project was done under the guidance of Mr. Amit Patel.
+The Data for the Task    This data has been collected and segmented manually by my team."/>
+
+    <meta property="og:title" content="Handwritten Character Recognition With Own Dataset" />
+<meta property="og:description" content="Introduction    We train the machine to recognize handwritten Alphabets. We prepared our own dataset for the project. This trained machine learning model can be then used in various other applications like word recognition, English OCR etc. All the relevant code can be found Here.This was the first Mini-Project that I did in my Bachelor&rsquo;s. This project was done under the guidance of Mr. Amit Patel.
+The Data for the Task    This data has been collected and segmented manually by my team." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mohneesh7.github.io/my-porfolio/posts/handwritten-character-recognnition/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-04-01T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2017-04-01T00:00:00&#43;00:00" />
+
+
+
+    <title>
+  Handwritten Character Recognition With Own Dataset · Mohneesh Sreegirisetty
+</title>
+
+    
+      <link rel="canonical" href="https://mohneesh7.github.io/my-porfolio/posts/handwritten-character-recognnition/">
+    
+
+    
+    
+    <link rel="preload" href="https://mohneesh7.github.io/my-porfolio/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" integrity="sha256-hEIt6X6xzye8ubyk8/uxjz68cRZHsJxoKS9fQ8idUGQ=" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="https://mohneesh7.github.io/my-porfolio/css/coder.min.abe8b6775d85a01169c10329309df501aa8a008ab354002f7858f077cae76020.css" integrity="sha256-q&#43;i2d12FoBFpwQMpMJ31AaqKAIqzVAAveFjwd8rnYCA=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://mohneesh7.github.io/my-porfolio/css/coder-dark.min.89c82b6022b96f77aeb521b240daec4f87ea029d84d1c78b8acd0735b91b3c92.css" integrity="sha256-icgrYCK5b3eutSGyQNrsT4fqAp2E0ceLis0HNbkbPJI=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://mohneesh7.github.io/my-porfolio/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://mohneesh7.github.io/my-porfolio/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="https://mohneesh7.github.io/my-porfolio/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mohneesh7.github.io/my-porfolio/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.81.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://mohneesh7.github.io/my-porfolio/">
+      Mohneesh Sreegirisetty
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://mohneesh7.github.io/my-porfolio/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://mohneesh7.github.io/my-porfolio/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://mohneesh7.github.io/my-porfolio/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://mohneesh7.github.io/my-porfolio/contact/">Contact me</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://mohneesh7.github.io/my-porfolio/posts/handwritten-character-recognnition/">
+              Handwritten Character Recognition With Own Dataset
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2017-04-01T00:00:00Z'>
+                April 1, 2017
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="https://mohneesh7.github.io/my-porfolio/tags/machine-learning/">Machine Learning</a>
+      <span class="separator">•</span>
+    <a href="https://mohneesh7.github.io/my-porfolio/tags/ocr/">OCR</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="introduction">
+  Introduction
+  <a class="heading-link" href="#introduction">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<p>We train the machine to recognize handwritten Alphabets. We prepared our own dataset for the
+project. This trained machine learning model can be then used in various other applications like word recognition,
+English OCR etc. All the relevant code can be found <a href="https://github.com/mohneesh7/Handwritten-English-Alphabet-Recognition">Here</a>.This 
+was the first Mini-Project that I did in my Bachelor&rsquo;s. This project was done under the guidance of Mr. Amit Patel.</p>
+<p><img src="https://mohneesh7.github.io/my-porfolio/images/featuredimage.jpg" alt="Image" /></p>
+<h1 id="the-data-for-the-task">
+  The Data for the Task
+  <a class="heading-link" href="#the-data-for-the-task">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<p>This data has been collected and segmented manually by my team. This was collected from all our classmates writing the alphabets in different styles.
+We used <strong>MATLAB</strong> to do the segmentation of individual alphabets and manually sorted every image into folders labeled by its corresponding alphabet.</p>
+<h2 id="the-structure-of-the-data">
+  The Structure of the Data
+  <a class="heading-link" href="#the-structure-of-the-data">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[English_alphabets]
+            |
+            |____[A]
+            |    |
+            |    |__1765.jpg
+            |    |__1764.jpg
+            |
+            |____[B]
+            |
+            |
+            |____[Z]
+</code></pre></div><h2 id="the-general-approach">
+  The General Approach
+  <a class="heading-link" href="#the-general-approach">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>The approach to solve the problem was pretty simple.</p>
+<ul>
+<li>We load in the each image as an array of (height x width) dimensions. this will result in many rows with the array data and the data is labeled according to the folder it belonged to. The grayness values in each pixel is taken as observations in this task and thus we build a dataset ready to be modeled.</li>
+<li>Taking all the dimensions might be of little to no use to us, so we do a dimentionality reduction  on the data. I used <strong>Principal Component Analysis (PCA)</strong> for this.
+<img src="https://mohneesh7.github.io/my-porfolio/images/pca_post01.png" alt="PCA" /></li>
+<li>We can have a better understanding of the data with <strong>T-SNE</strong>
+<img src="https://mohneesh7.github.io/my-porfolio/images/tsne_post01.png" alt="TSNE" /></li>
+<li>That&rsquo;s it the data is now ready to be modeled. I used SVM and logistic regression to classify back then, later I even used a MLP to train the model.
+Out of all those obviously the MLP performed better, but SVm also gave considerable results.</li>
+</ul>
+<p><img src="https://mohneesh7.github.io/my-porfolio/images/acc_post01.png" alt="accuracy" /></p>
+<p>If you want to tinker around with the notebook <a href="https://www.kaggle.com/mohneesh7/character-recognition">Here</a> is the kaggle notebook. You can test our your own theories on it. Feel free to use the <a href="https://www.kaggle.com/mohneesh7/english-alphabets">dataset</a> as well.</p>
+<p>{{ template &ldquo;_internal/disqus.html&rdquo; . }}</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "my-portfolio-njj7lyh3qx" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [
+          ['$', '$'], ['\\(', '\\)']
+        ],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Have A Nice Day</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Mohneesh Sreegirisetty 
+      
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="https://mohneesh7.github.io/my-porfolio/js/dark-mode.min.aee9c8a464eb7b3534c7110f7c5e169e7039e2fd92710e0626d451d6725af137.js" integrity="sha256-runIpGTrezU0xxEPfF4WnnA54v2ScQ4GJtRR1nJa8Tc="></script>
+      
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+    <script data-goatcounter="https://code.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+
+    
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "token"}'></script>
+
+
+
+    <script type="application/javascript">
+  var _paq = window._paq = window._paq || [];
+   
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://analytics.example.com/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', 'ABCDE']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=gid"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'gid');
+</script>
+
+  </body>
+
+</html>
