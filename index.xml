@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 01 Apr 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://mohneesh7.github.io/my-porfolio/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Handwritten Character Recognition With Own Dataset</title>
-      <link>https://mohneesh7.github.io/my-porfolio/posts/handwritten-character-recognition/</link>
+      <link>https://mohneesh7.github.io/my-porfolio/posts/handwritten-character-recognnition/</link>
       <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://mohneesh7.github.io/my-porfolio/posts/handwritten-character-recognition/</guid>
+      <guid>https://mohneesh7.github.io/my-porfolio/posts/handwritten-character-recognnition/</guid>
       <description>Introduction    We train the machine to recognize handwritten Alphabets. We prepared our own dataset for the project. This trained machine learning model can be then used in various other applications like word recognition, English OCR etc. All the relevant code can be found Here.This was the first Mini-Project that I did in my Bachelor&amp;rsquo;s. This project was done under the guidance of Mr. Amit Patel.
 The Data for the Task    This data has been collected and segmented manually by my team.</description>
     </item>
@@ -36,32 +36,12 @@ The Data for the Task    This data has been collected and segmented manually by 
     </item>
     
     <item>
-      <title>First snippet</title>
-      <link>https://mohneesh7.github.io/my-porfolio/snippets/first/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mohneesh7.github.io/my-porfolio/snippets/first/</guid>
-      <description>This content is in snippets/first/index.md
-pwd </description>
-    </item>
-    
-    <item>
       <title>Projects</title>
       <link>https://mohneesh7.github.io/my-porfolio/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://mohneesh7.github.io/my-porfolio/projects/</guid>
       <description>Nothing to see here&amp;hellip; Move along!</description>
-    </item>
-    
-    <item>
-      <title>Second snippet</title>
-      <link>https://mohneesh7.github.io/my-porfolio/snippets/second/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mohneesh7.github.io/my-porfolio/snippets/second/</guid>
-      <description>This content is in snippets/second/index.md
-ls -la </description>
     </item>
     
   </channel>

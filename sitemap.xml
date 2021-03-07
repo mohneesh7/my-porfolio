@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://mohneesh7.github.io/my-porfolio/posts/handwritten-character-recognition/</loc>
+    <loc>https://mohneesh7.github.io/my-porfolio/posts/handwritten-character-recognnition/</loc>
     <lastmod>2017-04-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mohneesh7.github.io/my-porfolio/tags/machine-learning/</loc>
@@ -28,16 +28,10 @@
   </url><url>
     <loc>https://mohneesh7.github.io/my-porfolio/categories/</loc>
   </url><url>
-    <loc>https://mohneesh7.github.io/my-porfolio/snippets/first/</loc>
-  </url><url>
     <loc>https://mohneesh7.github.io/my-porfolio/tags/machine/</loc>
   </url><url>
     <loc>https://mohneesh7.github.io/my-porfolio/projects/</loc>
   </url><url>
-    <loc>https://mohneesh7.github.io/my-porfolio/snippets/second/</loc>
-  </url><url>
     <loc>https://mohneesh7.github.io/my-porfolio/series/</loc>
-  </url><url>
-    <loc>https://mohneesh7.github.io/my-porfolio/snippets/</loc>
   </url>
 </urlset>
