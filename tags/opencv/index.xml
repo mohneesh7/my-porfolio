@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenCV on Mohneesh Sreegirisetty</title>
+    <link>https://mohneesh7.github.io/my-portfolio/tags/opencv/</link>
+    <description>Recent content in OpenCV on Mohneesh Sreegirisetty</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 02 Aug 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://mohneesh7.github.io/my-portfolio/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vehicle Detection and Trip Count using OpenCV and YoLoV3</title>
+      <link>https://mohneesh7.github.io/my-portfolio/posts/opencv/</link>
+      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mohneesh7.github.io/my-portfolio/posts/opencv/</guid>
+      <description>Background on the Task     Object Detection is the process of identifying things from an image or a video. It can be used tin many practical applications such as security, face detection, vehicle detection etc. We try to detect objects in the given video.
+ In this day and age CCTV video monitoring has become a tedious task and is very time taking and very error-prone. This project of ours will take on that problem as we try to solve the ever existing problem of CCTV monitoring, mainly vehicle and human detection and frequency assertion.</description>
+    </item>
+    
+  </channel>
+</rss>

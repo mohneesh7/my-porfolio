@@ -6,7 +6,17 @@
     <description>Recent content on Mohneesh Sreegirisetty</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 01 Apr 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://mohneesh7.github.io/my-portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Aug 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://mohneesh7.github.io/my-portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vehicle Detection and Trip Count using OpenCV and YoLoV3</title>
+      <link>https://mohneesh7.github.io/my-portfolio/posts/opencv/</link>
+      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mohneesh7.github.io/my-portfolio/posts/opencv/</guid>
+      <description>Background on the Task     Object Detection is the process of identifying things from an image or a video. It can be used tin many practical applications such as security, face detection, vehicle detection etc. We try to detect objects in the given video.
+ In this day and age CCTV video monitoring has become a tedious task and is very time taking and very error-prone. This project of ours will take on that problem as we try to solve the ever existing problem of CCTV monitoring, mainly vehicle and human detection and frequency assertion.</description>
+    </item>
+    
     <item>
       <title>Handwritten Character Recognition With Own Dataset</title>
       <link>https://mohneesh7.github.io/my-portfolio/posts/handwritten-character-recognnition/</link>
@@ -36,12 +46,14 @@ The Data for the Task    This data has been collected and segmented manually by 
     </item>
     
     <item>
-      <title>Projects</title>
+      <title>Projects 📒</title>
       <link>https://mohneesh7.github.io/my-portfolio/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://mohneesh7.github.io/my-portfolio/projects/</guid>
-      <description>Nothing to see here&amp;hellip; Move along!</description>
+      <description>Here are some of my projects with thier Github Links, To know more about each of them check out the Blog section.    Handwritten Character Recognition using Own Dataset    Using SVM and other techniques to create a model which would predict/recognize the english alphabet from our own dataset.
+For more Information on this refer my blog : Here
+Vehicle Detection and Trip Count Using OpenCV and YOLO    This is my final year project.</description>
     </item>
     
   </channel>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+    
+    
+
+    <meta name="author" content="Mohneesh Sreegirisetty">
+    <meta name="description" content="Background on the Task     Object Detection is the process of identifying things from an image or a video. It can be used tin many practical applications such as security, face detection, vehicle detection etc. We try to detect objects in the given video.
+ In this day and age CCTV video monitoring has become a tedious task and is very time taking and very error-prone. This project of ours will take on that problem as we try to solve the ever existing problem of CCTV monitoring, mainly vehicle and human detection and frequency assertion.">
+    <meta name="keywords" content="blog,developer,personal,machine learning,data science">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vehicle Detection and Trip Count using OpenCV and YoLoV3"/>
+<meta name="twitter:description" content="Background on the Task     Object Detection is the process of identifying things from an image or a video. It can be used tin many practical applications such as security, face detection, vehicle detection etc. We try to detect objects in the given video.
+ In this day and age CCTV video monitoring has become a tedious task and is very time taking and very error-prone. This project of ours will take on that problem as we try to solve the ever existing problem of CCTV monitoring, mainly vehicle and human detection and frequency assertion."/>
+
+    <meta property="og:title" content="Vehicle Detection and Trip Count using OpenCV and YoLoV3" />
+<meta property="og:description" content="Background on the Task     Object Detection is the process of identifying things from an image or a video. It can be used tin many practical applications such as security, face detection, vehicle detection etc. We try to detect objects in the given video.
+ In this day and age CCTV video monitoring has become a tedious task and is very time taking and very error-prone. This project of ours will take on that problem as we try to solve the ever existing problem of CCTV monitoring, mainly vehicle and human detection and frequency assertion." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mohneesh7.github.io/my-portfolio/posts/opencv/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-08-02T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2019-08-02T00:00:00&#43;00:00" />
+
+
+
+    <title>
+  Vehicle Detection and Trip Count using OpenCV and YoLoV3 · Mohneesh Sreegirisetty
+</title>
+
+    
+      <link rel="canonical" href="https://mohneesh7.github.io/my-portfolio/posts/opencv/">
+    
+
+    
+    
+    <link rel="preload" href="https://mohneesh7.github.io/my-portfolio/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" integrity="sha256-hEIt6X6xzye8ubyk8/uxjz68cRZHsJxoKS9fQ8idUGQ=" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="https://mohneesh7.github.io/my-portfolio/css/coder.min.abe8b6775d85a01169c10329309df501aa8a008ab354002f7858f077cae76020.css" integrity="sha256-q&#43;i2d12FoBFpwQMpMJ31AaqKAIqzVAAveFjwd8rnYCA=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://mohneesh7.github.io/my-portfolio/css/coder-dark.min.89c82b6022b96f77aeb521b240daec4f87ea029d84d1c78b8acd0735b91b3c92.css" integrity="sha256-icgrYCK5b3eutSGyQNrsT4fqAp2E0ceLis0HNbkbPJI=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://mohneesh7.github.io/my-portfolio/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://mohneesh7.github.io/my-portfolio/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="https://mohneesh7.github.io/my-portfolio/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mohneesh7.github.io/my-portfolio/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.81.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://mohneesh7.github.io/my-portfolio/">
+      Mohneesh Sreegirisetty
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://mohneesh7.github.io/my-portfolio/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://mohneesh7.github.io/my-portfolio/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://mohneesh7.github.io/my-portfolio/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://mohneesh7.github.io/my-portfolio/contact/">Contact me</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://mohneesh7.github.io/my-portfolio/posts/opencv/">
+              Vehicle Detection and Trip Count using OpenCV and YoLoV3
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2019-08-02T00:00:00Z'>
+                August 2, 2019
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              11-minute read
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="https://mohneesh7.github.io/my-portfolio/tags/opencv/">OpenCV</a>
+      <span class="separator">•</span>
+    <a href="https://mohneesh7.github.io/my-portfolio/tags/deep-learning/">Deep Learning</a>
+      <span class="separator">•</span>
+    <a href="https://mohneesh7.github.io/my-portfolio/tags/tensorflow/">Tensorflow</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="background-on-the-task">
+  Background on the Task
+  <a class="heading-link" href="#background-on-the-task">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<p>      Object Detection is the process of identifying things from an image or a video. It can be used tin many practical applications such as security, face detection, vehicle detection etc. We try to detect objects in the given video.</p>
+<p>      In this day and age CCTV video monitoring has become a tedious task and is very time taking and very error-prone. This project of ours will take on that problem as we try to solve the ever existing problem of CCTV monitoring, mainly vehicle and human detection and frequency assertion. 
+Our project focuses on the problem at hand “counting vehicle trips around our campus”.</p>
+<p>      The main problem is skeptical as it dosent have a fixed requirement as the trips are variable and are dependant on the climate and other foreseen and unforeseen conditions.</p>
+<h1 id="introduction">
+  Introduction
+  <a class="heading-link" href="#introduction">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<p>      An object is an identifiable portion of an image that can be interpreted as a single unit(according to computer vision).We can identify a region in  entire pixel values.
+Object detection is the process of finding instances of real-world objects, such as 
+faces, vehicles, buildings, etc.
+Object detection plays a key role in Artificial intelligence and Machine learning applications and has a wide range of use cases.</p>
+<h3 id="nbspnbspproblem-statement">
+    Problem Statement
+  <a class="heading-link" href="#nbspnbspproblem-statement">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>The main objective of our project is to detect the various objects present in the video and then secondarily count number of trips the tanker can take in the given CCTV footage from RGUKT Nuzvid(my college campus).</p>
+<h3 id="nbspnbspscope-of-the-project">
+    Scope of the project
+  <a class="heading-link" href="#nbspnbspscope-of-the-project">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>This project takes on the problem of tedious video surveillance and can be used to keep fraud and cheating in check. This project has many real world applications as it can be used to detect and count trips of a commercial vehicle and tallied with the times it claims to have taken the trips, this way fraud becomes scarce and can also be used for crowd  control in busy areas.</p>
+<h1 id="existing-solutions">
+  Existing Solutions
+  <a class="heading-link" href="#existing-solutions">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<blockquote>
+<p>“A fast object detection algorithm using motion-based region of interest determination”</p>
+<p>-A. Anbu ,  G. Agarwal ,  G. Srivastava</p>
+</blockquote>
+<p>     The above paper presents a fast algorithm for achieving motion-based object detection in an image sequence. While in most existing object-detection algorithms, segmentation of the image is done as the first step followed by grouping of segments, the proposed algorithm first uses motion information to identify what they call a region of interest.  Since the region of interest is always smaller than the image, the proposed algorithm is 2 to 4 times faster than every existing algorithm for object detection. In terms of the accuracy with which desired object is detected, the performance of our algorithm is comparable to the existing algorithms.</p>
+<p>Although the above algorithm did the job that it was intended to do, it  was slower and lacked real world application potential. In 2015, Joseph Redmon, Santosh Divvala, Ross Girshick and Ali Farhadi published a paper on YOLO (You only look once) :Unified, Real time object detection. This revolutionized how we did object detection.
+This approach generally frames the object detection problem as a regression problem to spatially seperated bounding boxes and associated class probabilities. A single neural network direclty predicts in a single evalualtion, hence the name YOLO.</p>
+<h3 id="nbspnbspadvantages-of-yolo">
+    Advantages of YOLO
+  <a class="heading-link" href="#nbspnbspadvantages-of-yolo">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>     Speed is the major advantage of YOLO, as it works at 45fps, which is better than real-time.There is also a faster version which works at 155 fps but is less accurate and generally used for small tasks. The best part, it is completely open source and can be used to improvise and mould it according to your requirements.</p>
+<h3 id="nbspnbsplimitations-of-yolo">
+    Limitations of YOLO
+  <a class="heading-link" href="#nbspnbsplimitations-of-yolo">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>     YOLO imposes strong spatial constraints on bounding box predictions since each grid cell only predicts two boxes and can only have one class. This spatial constraint limits the number of nearby objects that this model can predict. This model struggles with small objects that appear in groups, such as flocks of birds. Since this model learns to predict bounding boxes from data, it struggles to generalize to objects in new or unusual aspect ratios or configurations.</p>
+<h3 id="nbspnbspyolo-workflow">
+    YOLO workflow
+  <a class="heading-link" href="#nbspnbspyolo-workflow">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>YOLO divides up the image into a grid of 13 x 13 cells</p>
+<p><img src="https://mohneesh7.github.io/my-portfolio/images/yolo/1.png" alt="1" /></p>
+<p>Each of these cells is responsible for predicting 5 bounding boxes. A bounding box describes the rectangle that encloses an object.</p>
+<p>YOLO also outputs a confidence score that tells us how certain it is that the predicted bounding box actually encloses some object. This score doesn’t say anything about what kind of object is in the box, just if the shape of the box is any good.</p>
+<p>The predicted bounding boxes may look something like the following (the higher the confidence score, the fatter the box is drawn)</p>
+<p><img src="https://mohneesh7.github.io/my-portfolio/images/yolo/2.png" alt="2" /></p>
+<p>     For each bounding box, the cell also predicts a class. This works just like a classifier. It gives a probability distribution over all the possible classes.The confidence score for the bounding box and the class prediction are combined into one final score that tells us the probability that this bounding box contains a specific type of object. For example, the big fat yellow box on the left is 85% sure it contains the object “dog”.</p>
+<p><img src="https://mohneesh7.github.io/my-portfolio/images/yolo/3.png" alt="3" /></p>
+<p>     Since there are <strong>13×13 = 169</strong> grid cells and each cell predicts 5 bounding boxes, we end up with <strong>845</strong> bounding boxes in total. It turns out that most of these boxes will have very low confidence scores, so we only keep the boxes whose final score is 30% or more (you can change this threshold depending on how accurate you want the detector to be).</p>
+<p>The final prediction is then:</p>
+<p><img src="https://mohneesh7.github.io/my-portfolio/images/yolo/4.png" alt="4" /></p>
+<p>From the 845 total bounding boxes we only kept these three because they gave the best results. But note that even though there were 845 separate predictions, they were all made at the same time — the neural network just ran once. And that’s why <strong>YOLO</strong> is so powerful and fast.</p>
+<h3 id="nbspnbsptransfer-learning">
+    Transfer Learning
+  <a class="heading-link" href="#nbspnbsptransfer-learning">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>     Transfer learning is a machine learning method where a model developed for a task is reused as the starting point for a model on a second task.Transfer Learning differs from traditional Machine Learning in that it is the use of pre-trained models that have been used for another task to jump start the development process on a new task or problem.The benefits of Transfer Learning are that it can speed up the time it takes to develop and train a model by reusing these pieces or modules of already developed models. This helps speed up the model training process and accelerate results.</p>
+<h3 id="nbspnbsphow-to-use-transfer-learning">
+    How to use Transfer Learning?
+  <a class="heading-link" href="#nbspnbsphow-to-use-transfer-learning">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>
+<p><strong>Select Source Model:</strong>  
+A pre-trained source model is chosen from available models. Many research institutions release models on large and challenging datasets that may be included in the pool of candidate models from which to choose from.</p>
+</li>
+<li>
+<p><strong>Reuse Model:</strong>   
+The model pre-trained model can then be used as the starting point for a model on the second task of interest. This may involve using all or parts of the model, depending on the modeling technique used.</p>
+</li>
+<li>
+<p><strong>Tune Model:</strong>  
+Optionally the model  may need to be adapted or refined on the input-output pair data available for the task of interest.</p>
+</li>
+</ol>
+<h2 id="nbspwhy-is-it-used">
+   Why is it used?
+  <a class="heading-link" href="#nbspwhy-is-it-used">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>     Using Transfer Learning has several benefits that we will discuss in this section. The  main advantages are basically that you save training time, that your Neural Network performs better in most cases and that you don’t need a lot of data.</p>
+<p>     Usually ,you need a lot of data to train a Neural Network from Scratch but you don’t always have access to enough data. That is where Transfer Learning comes into play because with it you can build a solid machine learning model with comparatively little training data because the model is already pre-trained. This is especially valuable in Natural Language Processing.Because there is mostly expert knowledge required to create large labeled data sets.Therefore you also save a lot of training time, because it can sometimes take days or even weeks to train a deep Neural Network from Scratch on a complete task.</p>
+<p>This is very useful since most real-world problems typically do not have millions of labeled data points to train such complex models.</p>
+<h1 id="procedureapproach">
+  Procedure/Approach
+  <a class="heading-link" href="#procedureapproach">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<p>OK! That&rsquo;s enough theory, let&rsquo;s get into how this project was done.</p>
+<h3 id="nbspnbsptraditional-approach-using-opencv">
+    Traditional Approach using OpenCV
+  <a class="heading-link" href="#nbspnbsptraditional-approach-using-opencv">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>We clean the data first, in the preprocessing stage, we encode the raw footage and change the video dimensions in our required specifications.</li>
+<li>Each image is processed from the video and then the blobs are detected.</li>
+<li>The  blob will be identified by subtracting the present image with previous image as reference, this process is called as background subtraction.</li>
+</ol>
+<p float="left">
+<img style="width:400px;;" src="https://mohneesh7.github.io/my-portfolio/images/yolo/5.jpg" alt="5"/>
+<img style="width:400px;height:252px;" src="https://mohneesh7.github.io/my-portfolio/images/yolo/6.png" alt="6"/> 
+</p>
+<p>                    Reference Image                                                              Target image</p>
+<p>             <img src="https://mohneesh7.github.io/my-portfolio/images/yolo/7.png" alt="7" /></p>
+<p>                                                              Background Subtracted Result</p>
+<ol start="4">
+<li>Now the blobs can be detected in our region of interest (ROI). These blobs constitute the objects in the image. Mainly used for tracking and deteting purposes in videos.</li>
+</ol>
+<h3 id="deep-learning-approach-using-yolo-v3">
+  Deep Learning Approach using YoLo V3
+  <a class="heading-link" href="#deep-learning-approach-using-yolo-v3">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>
+<p>In the aforementioned chapter, we have seen Transfer Learning, which is quite useful and can at times improve the learning. We used the same for our problem statement.</p>
+</li>
+<li>
+<p>The preprocessing step is pretty much similar to the OpenCV aproach, as we need our videos to be of adequate quality and of low size.</p>
+</li>
+<li>
+<p>We used the COCO dataset which contains 80 classes of objects and took a pre-trained version on it, the algorithm used to train it was YOLO.</p>
+</li>
+<li>
+<p>We use all the frames which constitutes the video and apply one-shot prediction on each frame (takes around 4 sec) and then sew it back together, this is done with the openCV function videoCapture and its write feature.</p>
+</li>
+<li>
+<p>So far Object detection is successful, but applying it to a real-world problem is the real issue, so use now have to count the number of times the tanker crosses the ROI line.</p>
+</li>
+<li>
+<p>We first calculate centroid of every bounding box and then increment the count each time the centroid passes the ROI line.</p>
+</li>
+</ol>
+<h1 id="tools-and-technologies-used">
+  Tools and Technologies used
+  <a class="heading-link" href="#tools-and-technologies-used">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<h2 id="python">
+  Python
+  <a class="heading-link" href="#python">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>An Object oriented programming language widely used and is very popular nowadays. This is the most popular language used for AI/ML because, most researchers and developers use this as a base for the tools they develop, for example tensorflow, keras, pytorch etc.</p>
+<h2 id="computer-vision">
+  Computer Vision
+  <a class="heading-link" href="#computer-vision">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<ul>
+<li>
+<p>Computer vision generally deals with pictures and videos</p>
+</li>
+<li>
+<p>The basic idea is giving Vision/Sight to a computer through webcan , camera or video/image files.</p>
+</li>
+<li>
+<p>This a very versatile libraray supporterd for many different languages and is used for mainly image processing tasks and in video surveillances.</p>
+</li>
+</ul>
+<h2 id="background-subtraction">
+  Background Subtraction
+  <a class="heading-link" href="#background-subtraction">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>     Subtracting an image with reference to an image to get its foreground is the basic idea of background subtraction. Background subtraction is a widely used approach for detecting moving objects in videos from static cameras. The rationale in the approach is that of detecting the moving objects from the difference between the current frame and a reference frame, often called &ldquo;background image&rdquo;, or &ldquo;background model&rdquo;. Background subtraction is mostly done if the image in question is a part of a video stream. Background subtraction provides important cues for numerous applications in computer vision, for example surveillance tracking or human poses estimation.</p>
+<h2 id="google-colaboratory">
+  Google Colaboratory
+  <a class="heading-link" href="#google-colaboratory">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>This is a free training ground for data scientists from Google, this is equipped with a tesla K80 GPU and a free TPU is also provided after the new update.</p>
+<h2 id="tensorflowkeras">
+  Tensorflow(Keras)
+  <a class="heading-link" href="#tensorflowkeras">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>An open source machine learning library for research and production.</p>
+<h1 id="challenges">
+  Challenges
+  <a class="heading-link" href="#challenges">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<ul>
+<li>The difficulty arises when the type of the object to be detected and counting is different than that of the already available classes of objects.</li>
+<li>There can be a problem when the truck or the tanker both are in the same frame and there is a overlap.</li>
+<li>There is also the issue of how the camera is fitted and how the video feed is available to us, the perspective matters a lot as the ROI line depends on it.</li>
+<li>As the OpenCV approach dosen’t involve training the model, we can get the result almost immidiately, but cannot guarentee the efficiency and accuracy though. The Deep Learning approach takes a considerable amount of time to train but it is much more accurate, its even better than realtime using YOLO, the only hitch would be hardware limitations to use transfer learning</li>
+</ul>
+<h1 id="outputresult">
+  Output/Result
+  <a class="heading-link" href="#outputresult">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<p><em>The object detection output of the pre-trained YoLo V3 model :</em></p>
+<p><img src="https://mohneesh7.github.io/my-portfolio/images/yolo/8.jpg" alt="8" /></p>
+<p><em>The Vehicle detection in the CCTV Footage :</em></p>
+<p><img src="https://mohneesh7.github.io/my-portfolio/images/yolo/9.jpg" alt="9" /></p>
+<p><em>The below two images show the count increment as the truck passes the ROI line :</em></p>
+<p float="left">
+<img style="width:425px;height:252px;" src="https://mohneesh7.github.io/my-portfolio/images/yolo/10.jpg" alt="10"/>
+<img style="width:425px;height:252px;" src="https://mohneesh7.github.io/my-portfolio/images/yolo/11.jpg" alt="11"/> 
+</p>
+<h1 id="references">
+  References
+  <a class="heading-link" href="#references">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<ul>
+<li>
+<p><em>Haskell. Transfer of learning : cognition, instruction, and reasoning. Academic Press,San Diego Calif 2001</em></p>
+</li>
+<li>
+<p><em>N. Perkins and G. Salomon. Transfer of learning. International Encyclopedia of Education (2nd ed.), 1992</em></p>
+</li>
+<li>
+<p><em>A. Anbu, G. Agarwal and G. Srivastava, &ldquo;A fast object detection algorithm using motion-based region-of-interest determination,&rdquo; 2002 14th International Conference on Digital Signal Processing Proceedings. DSP 2002 (Cat. No.02TH8628), Santorini, Greece, 2002, pp. 1105-1108 vol.2.</em></p>
+</li>
+<li>
+<p><em>You Only Look Once: Unified, Real-Time Object Detection, Joseph Redmon, Santosh Divvala, Ross Girshick, Ali Farhadi</em></p>
+</li>
+<li>
+<p><a href="https://github.com/ahmetozlu/tensorflow_object_counting_api">Tensorflow Object Counting</a></p>
+</li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [
+          ['$', '$'], ['\\(', '\\)']
+        ],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Have A Nice Day</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Mohneesh Sreegirisetty 
+      
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="https://mohneesh7.github.io/my-portfolio/js/dark-mode.min.aee9c8a464eb7b3534c7110f7c5e169e7039e2fd92710e0626d451d6725af137.js" integrity="sha256-runIpGTrezU0xxEPfF4WnnA54v2ScQ4GJtRR1nJa8Tc="></script>
+      
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://mohneesh7.github.io/my-portfolio/tags/deep-learning/</loc>
+    <lastmod>2019-08-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mohneesh7.github.io/my-portfolio/</loc>
+    <lastmod>2019-08-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mohneesh7.github.io/my-portfolio/tags/opencv/</loc>
+    <lastmod>2019-08-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mohneesh7.github.io/my-portfolio/posts/</loc>
+    <lastmod>2019-08-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mohneesh7.github.io/my-portfolio/tags/</loc>
+    <lastmod>2019-08-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mohneesh7.github.io/my-portfolio/tags/tensorflow/</loc>
+    <lastmod>2019-08-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mohneesh7.github.io/my-portfolio/posts/opencv/</loc>
+    <lastmod>2019-08-02T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://mohneesh7.github.io/my-portfolio/posts/handwritten-character-recognnition/</loc>
     <lastmod>2017-04-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mohneesh7.github.io/my-portfolio/tags/machine-learning/</loc>
     <lastmod>2017-04-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://mohneesh7.github.io/my-portfolio/</loc>
-    <lastmod>2017-04-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://mohneesh7.github.io/my-portfolio/tags/ocr/</loc>
-    <lastmod>2017-04-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://mohneesh7.github.io/my-portfolio/posts/</loc>
-    <lastmod>2017-04-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://mohneesh7.github.io/my-portfolio/tags/</loc>
     <lastmod>2017-04-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mohneesh7.github.io/my-portfolio/contact/</loc>
