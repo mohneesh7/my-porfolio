@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Mohneesh Sreegirisetty</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 02 Aug 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://mohneesh7.github.io/my-portfolio/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mohneesh7.github.io/my-portfolio/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kaggle Cassava Leaf Disease Detection 2020 Writeup</title>
+      <link>https://mohneesh7.github.io/my-portfolio/posts/kaggle-cassava/</link>
+      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mohneesh7.github.io/my-portfolio/posts/kaggle-cassava/</guid>
+      <description>This year’s Cassava Leaf detection challenge was a very good one as many more people participated compared to the last year where only 86 teams participated in comparison there were over 3500+ teams that took part this year. I joined this challenge a bit later. I am placed at 1444/3900 teams (top 38%). I missed the medal this time around but am pretty happy on surviving the shapeup which shot me up 425 places up the Leader board.</description>
+    </item>
+    
     <item>
       <title>Vehicle Detection and Trip Count using OpenCV and YoLoV3</title>
       <link>https://mohneesh7.github.io/my-portfolio/posts/opencv/</link>

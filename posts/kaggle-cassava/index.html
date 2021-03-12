@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+    
+    
+
+    <meta name="author" content="Mohneesh Sreegirisetty">
+    <meta name="description" content="This year’s Cassava Leaf detection challenge was a very good one as many more people participated compared to the last year where only 86 teams participated in comparison there were over 3500&#43; teams that took part this year. I joined this challenge a bit later. I am placed at 1444/3900 teams (top 38%). I missed the medal this time around but am pretty happy on surviving the shapeup which shot me up 425 places up the Leader board.">
+    <meta name="keywords" content="blog,developer,personal,machine learning,data science">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Kaggle Cassava Leaf Disease Detection 2020 Writeup"/>
+<meta name="twitter:description" content="This year’s Cassava Leaf detection challenge was a very good one as many more people participated compared to the last year where only 86 teams participated in comparison there were over 3500&#43; teams that took part this year. I joined this challenge a bit later. I am placed at 1444/3900 teams (top 38%). I missed the medal this time around but am pretty happy on surviving the shapeup which shot me up 425 places up the Leader board."/>
+
+    <meta property="og:title" content="Kaggle Cassava Leaf Disease Detection 2020 Writeup" />
+<meta property="og:description" content="This year’s Cassava Leaf detection challenge was a very good one as many more people participated compared to the last year where only 86 teams participated in comparison there were over 3500&#43; teams that took part this year. I joined this challenge a bit later. I am placed at 1444/3900 teams (top 38%). I missed the medal this time around but am pretty happy on surviving the shapeup which shot me up 425 places up the Leader board." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mohneesh7.github.io/my-portfolio/posts/kaggle-cassava/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-30T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-01-30T00:00:00&#43;00:00" />
+
+
+
+    <title>
+  Kaggle Cassava Leaf Disease Detection 2020 Writeup · Mohneesh Sreegirisetty
+</title>
+
+    
+      <link rel="canonical" href="https://mohneesh7.github.io/my-portfolio/posts/kaggle-cassava/">
+    
+
+    
+    
+    <link rel="preload" href="https://mohneesh7.github.io/my-portfolio/fonts/forkawesome-webfont.woff2?v=1.1.7" as="font" type="font/woff2" integrity="sha256-hEIt6X6xzye8ubyk8/uxjz68cRZHsJxoKS9fQ8idUGQ=" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="https://mohneesh7.github.io/my-portfolio/css/coder.min.abe8b6775d85a01169c10329309df501aa8a008ab354002f7858f077cae76020.css" integrity="sha256-q&#43;i2d12FoBFpwQMpMJ31AaqKAIqzVAAveFjwd8rnYCA=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://mohneesh7.github.io/my-portfolio/css/coder-dark.min.89c82b6022b96f77aeb521b240daec4f87ea029d84d1c78b8acd0735b91b3c92.css" integrity="sha256-icgrYCK5b3eutSGyQNrsT4fqAp2E0ceLis0HNbkbPJI=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://mohneesh7.github.io/my-portfolio/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://mohneesh7.github.io/my-portfolio/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="https://mohneesh7.github.io/my-portfolio/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mohneesh7.github.io/my-portfolio/images/apple-touch-icon.png">
+
+    
+      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
+        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.81.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://mohneesh7.github.io/my-portfolio/">
+      Mohneesh Sreegirisetty
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://mohneesh7.github.io/my-portfolio/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://mohneesh7.github.io/my-portfolio/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://mohneesh7.github.io/my-portfolio/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://mohneesh7.github.io/my-portfolio/contact/">Contact me</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://mohneesh7.github.io/my-portfolio/posts/kaggle-cassava/">
+              Kaggle Cassava Leaf Disease Detection 2020 Writeup
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-01-30T00:00:00Z'>
+                January 30, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              8-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <p>This year’s Cassava Leaf detection challenge was a very good one as many more people participated compared to the last year where only 86 teams participated in comparison there were over 3500+ teams that took part this year. I joined this challenge a bit later. I am placed at 1444/3900 teams (top 38%). I missed the medal this time around but am pretty happy on surviving the shapeup which shot me up 425 places up the Leader board. I wish to note down everything that did in this competition and everything I learned this time around. It will be useful for me in the future to reference this as well as beginners getting into kaggle who have trouble how to approach a given problem. All the code is available as a Kaggle notebook here. So, Let’s begin.</p>
+<p>      <img src="https://mohneesh7.github.io/my-portfolio/images/yolo/12.jpg" alt="yo" /></p>
+<h1 id="problem-statement-overview">
+  Problem Statement Overview
+  <a class="heading-link" href="#problem-statement-overview">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<p>    As the second-largest provider of carbohydrates in Africa, cassava is a key food security crop grown by smallholder farmers because it can withstand harsh conditions. At least 80% of household farms in Sub-Saharan Africa grow this starchy root, but viral diseases are major sources of poor yields. With the help of data science, it may be possible to identify common diseases so they can be treated.</p>
+<p>    Existing methods of disease detection require farmers to solicit the help of government-funded agricultural experts to visually inspect and diagnose the plants. This suffers from being labor-intensive, low-supply, and costly. As an added challenge, effective solutions for farmers must perform well under significant constraints, since African farmers may only have access to mobile-quality cameras with low-bandwidth.</p>
+<p>    Existing methods of disease detection require farmers to solicit the help of government-funded agricultural experts to visually inspect and diagnose the plants. This suffers from being labor-intensive, low-supply, and costly. As an added challenge, effective solutions for farmers must perform well under significant constraints, since African farmers may only have access to mobile-quality cameras with low-bandwidth.</p>
+<p>    In this competition, we introduce a dataset of 21,367 labeled images collected during a regular survey in Uganda. Most images were crowdsourced from farmers taking photos of their gardens, and annotated by experts at the National Crops Resources Research Institute (NaCRRI) in collaboration with the AI lab at Makerere University, Kampala. This is in a format that most realistically represents what farmers would need to diagnose in real life.</p>
+<p>Our task in this competition is to classify an image into any of the 5 categories:</p>
+<ul>
+<li>Cassava Bacterial Blight (CBB)</li>
+<li>Cassava Mosaic Disease (CMD)</li>
+<li>Cassava Brown Streak Disease (CBSD)</li>
+<li>Cassava Green Mottle (CGM)</li>
+<li>Healthy</li>
+</ul>
+<h1 id="my-approach-to-solving-the-problem">
+  My Approach To Solving The Problem
+  <a class="heading-link" href="#my-approach-to-solving-the-problem">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<p>    Now that we have an understanding of what the problem statement is, we know this is clearly a classification problem (multi-class). For classification, we can use many Machine learning models after converting each image into an array, but CNN’s are a better place to begin for images.</p>
+<p>    I tried using a simple CNN architecture that I use for every image classification problem, used random weights initialization, and used SGD with Nesterov momentum. (If you want to learn about Nesterov momentum go here ) This did not give me any good results.</p>
+<h3 id="the-flow-of-my-experiments">
+  The Flow of My Experiments
+  <a class="heading-link" href="#the-flow-of-my-experiments">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ol>
+<li>
+<p>Did a little EDA on the data, to know what the class distribution was like.</p>
+<p><img src="https://mohneesh7.github.io/my-portfolio/images/yolo/13.png" alt="Graph" /></p>
+<p><strong>Key Insights :</strong></p>
+<ul>
+<li>Cassava Mosaic Disease (CMD) is the dominant class in the training set constituting 61.5% of the total data</li>
+<li>The dataset is very skewed so there might be a need for upsampling or undersampling the images.</li>
+</ul>
+</li>
+<li>
+<p>The training set was so skewed, I tested whether the test set (which was private, uploaded notebook will predict on the test set, that means we did not have any info on the test set), I uploaded a notebook which predicted everything to be the dominant class(CMD).Surprisingly, this gave an accuracy of 60.2%.</p>
+<p><img src="https://mohneesh7.github.io/my-portfolio/images/yolo/14.png" alt="score" /></p>
+</li>
+<li>
+<p>I first intended to not use K-Fold CV as it&rsquo;s resource-intensive and kaggle puts a 9hr limit on a single session. I decided to use 10% of the data as a validation set and the remaining as the training set.</p>
+</li>
+<li>
+<p>At first I used just little augmentations, but a few heavy augmentations goes a long way. I used the albumentations library to augment my images.</p>
+</li>
+<li>
+<p>The modeling part was very tricky, as I have said earlier my custom CNN architecture was not really good, if anything, the learning process was too slow and inefficient. I thought of using transfer learning to solve the problem. I tried all these below architectures with ‘imagenet’ weights:</p>
+<ul>
+<li>ResNet50</li>
+<li>VGG16</li>
+<li>EfficientNet B0 — B5</li>
+</ul>
+<p>Out of these efficientnet B4 was a better choice that gave good results with low train time.</p>
+</li>
+<li>
+<p>The Loss function used was Cross-entropy for the most part, I also tried using Bi-Tempered Logistic loss (Google blog). I used label smoothing along with it because there were many noisy labels present in the training set. To learn more about label smoothing take a look at my code or go here.</p>
+</li>
+<li>
+<p>I used the Adam optimizer with a starting learning rate of 0.001, I did not use any learning rate scheduler but used learning rate reducer as one of my callback functions.</p>
+</li>
+<li>
+<p>At last the submissions were made with Soft-Voting ensembles of trained models.</p>
+</li>
+</ol>
+<p>After this, I got an LB score of 0.888, which was good but not enough to be competitive. So I used 5-Fold CV and did all the above steps all over again.</p>
+<h1 id="results">
+  Results
+  <a class="heading-link" href="#results">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<p>I have tabulated all my results in the form of a markdown table have a look below :</p>
+<script src="https://gist.github.com/mohneesh7/4c4f1de888b42890d564624a5c114657.js"></script>
+<h1 id="things-i-tried-but-didnt-work-out">
+  Things I Tried but didn&rsquo;t Work Out
+  <a class="heading-link" href="#things-i-tried-but-didnt-work-out">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<ul>
+<li>Froze all the layers of the pre-trained model and tried to only train the additional Dense layers, it did not work out, mostly because the dataset was not very resembling of imagenet data. (This is what I think and some kagglers as well).</li>
+<li>Tried to freeze the batch normalization layers to keep the original mean and standard deviation values, this messed up the model big time. I used custom mean and std values for the dataset, this did not help as well.</li>
+<li>Tried Nadam optimizer as well (RMSprop with Nesterov momentum), instead of Adam. This did not give any significant improvement over Adam.</li>
+<li>Tried Bi-Tempered Logistic Loss, this was most similar to Cross-Entropy, so I just went with CE.</li>
+<li>Test Time Augmentation (TTA), was tricky because many fellow competitors found this very useful and their accuracy increased. I did very few rotations and flips which did give me good results, but a little more heavy TTA saw a drop in the CV score. I decided to trust my CV and kept my TTA very light.</li>
+<li>This competition allowed using the 2019 cassava leaf dataset as well, But using it did not help at all.</li>
+</ul>
+<h1 id="things-i-learned-for-the-first-time">
+  Things I Learned for the First Time
+  <a class="heading-link" href="#things-i-learned-for-the-first-time">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<p>Now comes the most important section, I jot down everything new learned in this wonderful journey of one month.</p>
+<ul>
+<li>First and foremost, Kaggle is all about small tweaks and experiments, PyTorch is very useful in this case, most of the kagglers use PyTorch. Even though TF2 is prominent in the industry, it&rsquo;s really tough to use it in kaggle experiments. There aren’t many implementations in TF of new research papers as many as there are in PyTorch. (I have started learning PyTorch for this very reason)</li>
+<li>I have learned the basics of using the TPU’s provided which boost the training speed significantly.</li>
+<li>I learned to use the mixed-precision training policy which can reduce train times significantly.</li>
+<li>This was my first time using albumentations for augmentations, normally I use the in-built image data generator. It is very powerful and easy to use.
+I learned about label smoothing and pseudo labeling to tackle the noisy labels in the competition.</li>
+<li>Through this competition I came to know about efficientnets, these are very interesting and now SOTA CNN architectures. There was a paper release of NFnets from the deepmind team, they remove batch normalization layers altogether, which seems very interesting but unfortunately, I was unable to try them out with this competition.</li>
+<li>There is no doubt I learned so many coding techniques from many kaggle notebooks and discussion threads that I can’t even keep track of. Thanks for that guys.</li>
+<li>I knew about simple voting ensembling, but I learned about soft-voting ensembling where you add up all probability values and then take an average rather than choosing the most predicted class. (This came in really handy).</li>
+<li>I learned the importance of logging the results of your experiments, next time I will try out Neptune or any similar service. I was really disorganized at the beginning that made my further experiments hell. Organize your experiments and save several hours of hassle.</li>
+<li>I learned that in Kaggle trusting your CV score is as important as your Public LB score because after the competition the shakeup might really take a toll on you, I have seen people fall from 3rd place to 30 and 1000+ place to 150 as well. The model needs to have stability, rather than overfitting to the public test set.</li>
+<li>I looked into CutMixup paper as well, it was good but I did not get a chance to use it in my experiments.</li>
+<li>The trick to juicing out every ounce of accuracy from every model is to ensemble them all, I found out at the end of the competition that people were using 20–30 models to the ensemble to get to that top spot.</li>
+<li>I found a new way to clear the TF variables using <strong>tensorflow.keras.backend.clear_session()</strong>,</li>
+<li>Kaggle is a very good place to learn new things in this field. Ask any question, however naive it may be someone will answer and help you out for sure.</li>
+</ul>
+<h1 id="conclusion">
+  Conclusion
+  <a class="heading-link" href="#conclusion">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
+<hr />
+<p>This competition added so much to my knowledgebase. I think I would have done better if I had a good team for this challenge, but it is what it is. Below you can find all the kernel links:</p>
+<ul>
+<li>Full organized case study: <a href="https://www.kaggle.com/mohneesh7/cassava-2020-case-study-full-progress-keras-gpu">Kernel 1</a></li>
+<li>Random code that I did without recording any results: <a href="https://www.kaggle.com/mohneesh7/cassava-leaf-disease-detection-lb-0-885-keras">Kernel 2</a></li>
+<li>I have added Streamlit sharing support to deploy this model. Go <a href="https://share.streamlit.io/mohneesh7/cassava-kaggle-2020/main/Streamlit.py">here</a> to test it out yourself.</li>
+<li>All the code and other things can be found in this <a href="https://github.com/mohneesh7/cassava-kaggle-2020">Github</a> repository.</li>
+</ul>
+<p>If you have any questions use the comment box below.
+Cheers!😀</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "my-portfolio-njj7lyh3qx" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [
+          ['$', '$'], ['\\(', '\\)']
+        ],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Have A Nice Day</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2021
+         Mohneesh Sreegirisetty 
+      
+      
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+        
+        <script src="https://mohneesh7.github.io/my-portfolio/js/dark-mode.min.aee9c8a464eb7b3534c7110f7c5e169e7039e2fd92710e0626d451d6725af137.js" integrity="sha256-runIpGTrezU0xxEPfF4WnnA54v2ScQ4GJtRR1nJa8Tc="></script>
+      
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>
